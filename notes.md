@@ -29,4 +29,4 @@ Ketika monitor mode sudah aktif kita bisa mengcapture semua paket yang dikirim d
 ```
 airodump-ng wlan0
 ```
-![logo](Assets/AIRODUMP-NG WLAN0.png)
+![logo](Assets/AIRODUMP-NG%20WLAN0.png)
