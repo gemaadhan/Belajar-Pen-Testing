@@ -26,4 +26,4 @@ ifconfig wlan0 up
 
 Ketika monitor mode sudah aktif kita bisa mengcapture semua paket yang dikirim dalam jangkuan kita, bahkan jika paket tidak ditujukan untuk komputer kita, bahkan kita tidak terhubung ke target network, bahkan tanpa mengetahui password target network kita. semua itu dilakukan dengan paket sniffer bernama airodump-ng.
 
-![logo]:https://github.com/gemaadhan/Belajar-Pen-Testing/blob/master/Assets/AIRODUMP-NG%20WLAN0.png
+![logo](https://github.com/gemaadhan/Belajar-Pen-Testing/blob/master/Assets/AIRODUMP-NG%20WLAN0.png)
