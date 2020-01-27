@@ -1,4 +1,4 @@
-# Ganti MAC ADDRESS
+### Ganti MAC ADDRESS
 ```
 ifconfig wlan0 down 
 ifconfig wlan0 hw ether 00:11:22:33:44:55
@@ -7,7 +7,7 @@ ifconfig wlan0 up
 
 mac address akan balik lagi habis di reboot. karena perubahan hanya di simpan di memory. mac address ga akan kembali ke default selama ngga di reboot, kalo itu terjadi berarti ada problem.
 
-# Ubah mode
+### Ubah mode
 untuk melihat mode yang sedang aktif pada wireless adapter, masukkan command `iwconfig`. mode default adalah mode managed, mode ini hanya akan menangkap trafik yang dest mac address nya adalah dest address wireless adapter kita. 
 
 agar bisa menangkap seluruh trafik yang lewat, kita perlu merubah menjadi mode monitor. namun sebelum nya kita perlu mematikan service yang mungkin akan mengganggu saat kita menyalakan mode ini. 
@@ -29,4 +29,34 @@ Ketika monitor mode sudah aktif kita bisa mengcapture semua paket yang dikirim d
 ```
 airodump-ng wlan0
 ```
-![logo](Assets/AIRODUMP-NG%20WLAN0.png)
+![AIRODUMP-NG WLAN0](Assets/AIRODUMP-NG%20WLAN0.png)
+
+#### BSSID
+mac address dari target (access point)
+
+#### PWR
+kekuatan sinyal dari target (access point)
+
+#### Beacons
+frame yang dibroadcast oleh target untuk menunjukan eksistensi nya, termasuk di dalamnya adalah info mengenai BSSID, Beacons, DATA, ENC, AUTH, ESSID
+
+#### #/s
+jumlah paket data yang kita kumpulkan dalam 10 detik terakhir
+
+#### CH
+Channel dimana network tersebut bekerja
+
+#### MB
+Speed maksimal dari target
+
+#### ENC 
+enkripsi yang digunakan oleh target. 
+
+#### CHIPER
+chiper yang digunakna oleh target
+
+#### AUTH
+authentication yang digunakan target, contoh PSK/Pre Shared Key
+
+#### SSID
+SSID target
