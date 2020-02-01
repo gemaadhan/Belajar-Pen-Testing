@@ -77,6 +77,12 @@ aireplay-ng --arpreplay -b mactargetrouter -h macadapterkita wlan0
 dari yang sudah dicoba, ternyata butuh waktu lama untuk mendapat paket arp, kita perlu menunggu orang ganti ip dulu atau orang konek baru. 
 ![arpreplay](Assets/arpreplay2.png) 
 
+empat, ketika capture nya dirasa sudah cukup, kita bisa menjalankan aircrack-ng
+```
+aircrack-ng namafile.cap
+```
+
+yey KEYFOUND...
 
 
 
