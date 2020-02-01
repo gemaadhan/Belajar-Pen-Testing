@@ -75,7 +75,7 @@ tiga, gunakan arp request reply, idenya adalah dengan menunggu paket ARP, captur
 aireplay-ng --arpreplay -b mactargetrouter -h macadapterkita wlan0
 ```
 dari yang sudah dicoba, ternyata butuh waktu lama untuk mendapat paket arp, kita perlu menunggu orang ganti ip dulu atau orang konek baru. 
-![arpreplay](Assets/arpreplay.png) 
+![arpreplay](Assets/arpreplay2.png) 
 
 
 
