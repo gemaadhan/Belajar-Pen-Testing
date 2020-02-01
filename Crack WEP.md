@@ -54,7 +54,8 @@ in some cases kita hanya akan dapat key berformat `nn:nn:nn:nn:nn`, untuk menggu
 
 ### CRACK WEP IN NOT BUSY NETWORK
 pada network yang sepi, penambahan jumlah data akan sangat lambat, sehingga kita harus menunggu cukup lama.
-![AIRODUMP-NG WLAN0 DATA.png](Assets/AIRODUMP-NG%20WLAN0 DATA.png) 
+![AIRODUMP-NG WLAN0 DATA.png](Assets/AIRODUMP-NG%20WLAN0%20DATA.png) 
+
 
 
 
