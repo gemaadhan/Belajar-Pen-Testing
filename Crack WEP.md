@@ -1,29 +1,27 @@
 # PRE CONNECTION  
 
-## Sniffing 
+## SNIFFING 
 untuk melakukan ini anda bahkan tidak perlu terhubung ke wifi. 
 
-## Sniffing Pada Frekuensi 5 dan 2.4 GHz
-
-### Sniffing ke Frekuensi 5GHz
+### SNIFFING TO 5GHz FREQUENCY
 ```
 airodump-ng --band a wlan0  
 ```
 
-### Sniffing ke Semua Frekuensi
+### SNIFFING TO ALL FREQUENCY
 ```
 airodump-ng --band abg wlan0
 ```
 
-### Sniffing ke Target Tertentu
+### SNIFFING FOR SPESIFIC TARGET
 ```
 airodump-ng --bssid mac --channel channelberapa --write namafile wlan0
 ```
 
-## Gather Information
+## GATHER INFORMATION
 dari hasil snifing di atas maka akan terbentuk file dengan ekstensi .cap. Buka file tersebut dengan wireshark, maka akan terlihat info mengenai seluruh trafik misalnya info device yang digunakan, bahkan passwod dan username. namun kita perlu memperhatikan ENC yang digunakan , jika wifi tersebut menggunakan enc seperti WEP/WPA/WPA2 maka yang tampil di wireshark hanya informasi terenkrip yang tidak bisa kita baca, namun jika ENC nya OPN kita bisa mengintip password nya karena semua nya plain text. 
 
-## Deauth Attack 
+## DEAUTH ATTACH
 kita akan pura pura menjadi client untuk mengirim request deauth ke router, dan sekaligus menjadi router untuk mereply request tersebut ke client
 
 ```
@@ -40,6 +38,7 @@ mari kita jabarkan agak detail, client mau kirim data ke router. setiap paket ak
 kemudian giberish dan IV(dalam bentuk plain text) dikirim ke router. kenapa IV nya harus diikutkan ? karena agar si router bisa menggenerate keystream untuk mendecrypt gibberish nya. Dan jeleknya IV akan di repeat in busy network, ini membuat WEP vulnerable for statistical attack, Dengan Repeated IV, keystream bisa ditemukan dan akhirnya passwordnya juga bisa ditentukan. 
 
 ## CRACK WEP
+### CRACK WEP IN BUSY NETWORK
 untuk crack WEP kita perlu menangkap IV dalam **jumlah banyak**, menggunakan airodump-ng. dan menganalyse IV sekaligus menjalankan statistical attack dan crack key nya menggunakan menggunakan aircrack-ng. **Ingat Data yang di Capture harus dalam jumlah yang banyak**
 
 
@@ -53,6 +52,9 @@ aircrack-ng namafile.cap
 
 in some cases kita hanya akan dapat key berformat `nn:nn:nn:nn:nn`, untuk menggunakannya hapus semua tanda `:`. Atau biasanya kita juga bisa mendapat ASCII password yang bisa langung digunakan. 
 
+### CRACK WEP IN NOT BUSY NETWORK
+pada network yang sepi, penambahan jumlah data akan sangat lambat, sehingga kita harus menunggu cukup lama.
+![AIRODUMP-NG WLAN0 DATA.png](Assets/AIRODUMP-NG%20WLAN0 DATA.png) 
 
 
 
