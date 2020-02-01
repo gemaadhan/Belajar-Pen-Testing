@@ -54,7 +54,32 @@ in some cases kita hanya akan dapat key berformat `nn:nn:nn:nn:nn`, untuk menggu
 
 ### CRACK WEP IN NOT BUSY NETWORK
 pada network yang sepi, penambahan jumlah data akan sangat lambat, sehingga kita harus menunggu cukup lama.
-![AIRODUMP-NG WLAN0 DATA.png](Assets/AIRODUMP-NG%20WLAN0%20DATA.png) 
+![AIRODUMP-NG WLAN0 DATA.png](Assets/AIRODUMP-NG%20WLAN0%20DATA.png)
+
+solusi nya adalah memaksa AP untuk menggenerate IV baru. kita perlu *mengasosiasikan* adapter kita dengan network target, adpater perlu memberi tahu bahwa adapter mau berkomunikasi dengan AP. karena secara default AP akan menolak semua komunikasi keculai device yang mau berkomunikasi sudah terhubung/connected. *ingat : associate ga perlu password, kalau mau connect kita perlu password*.
+
+
+pertama capture dulu
+```
+airodump-ng --bssied mactargetrouter --channel channelberapa --write namafile wlan0
+```
+
+dua asosiasikan adapter ke network target
+```
+aireplay-ng --fakeauth 0 -a mactargetrouter -h macadapterkita wlan0
+```
+command di atas adalah fake auth digunakan untuk meng open auth, sehingga komunikasi kita akan terus diterima. sedangkan 0 artinya kita lakukan ini cuma sekali.
+
+tiga, gunakan arp request reply, idenya adalah dengan menunggu paket ARP, capture it dan mereply(retransmit it). sehingga menyebabkan AP menggenerate paket baru dengan new IV. dengan keep doing this kita akan mendapatkan new paket dan new iv terus menerus, sehingga ketika data nya sudah cukup kita bisa crack the key.
+```
+aireplay-ng --arpreplay -b mactargetrouter -h macadapterkita wlan0
+```
+dari yang sudah dicoba, ternyata butuh waktu lama untuk mendapat paket arp, kita perlu menunggu orang ganti ip dulu atau orang konek baru. 
+![arpreplay](Assets/arpreplay.png) 
+
+
+
+
 
 
 
